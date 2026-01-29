@@ -1,5 +1,6 @@
 import { component$, useSignal, useTask$, $ } from "@builder.io/qwik";
 import type { PRBubbleCreate } from "~/lib/api";
+import { api } from "~/lib/api";
 
 interface PRFormProps {
   initialData?: Partial<PRBubbleCreate>;
@@ -24,6 +25,8 @@ export const PRForm = component$<PRFormProps>((props) => {
     (props.initialData?.status as "draft" | "active") || "draft"
   );
   const utmCampaign = useSignal(props.initialData?.utm_campaign || "");
+  const isUploading = useSignal(false);
+  const uploadError = useSignal("");
 
   const notifyPreviewChange = $(() => {
     if (props.onPreviewChange$) {
@@ -73,13 +76,52 @@ export const PRForm = component$<PRFormProps>((props) => {
     }
   });
 
+  const handleFileSelect = $(async (e: Event) => {
+    const input = e.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    uploadError.value = "";
+    isUploading.value = true;
+
+    try {
+      const result = await api.upload.image(file);
+      imageUrl.value = result.url;
+    } catch (error) {
+      uploadError.value = error instanceof Error ? error.message : "Upload failed";
+    } finally {
+      isUploading.value = false;
+      input.value = "";
+    }
+  });
+
+  const handleUploadZoneClick = $(() => {
+    const fileInput = document.getElementById("image-upload-input") as HTMLInputElement;
+    fileInput?.click();
+  });
+
   return (
     <form onSubmit$={handleSubmit} class="space-y-6">
       {/* Image Upload */}
       <div class="form-group">
         <label class="form-label">画像</label>
-        <div class="upload-zone">
-          {imageUrl.value ? (
+        <input
+          type="file"
+          id="image-upload-input"
+          accept="image/jpeg,image/png,image/gif,image/webp"
+          onChange$={handleFileSelect}
+          class="hidden"
+        />
+        <div 
+          class="upload-zone cursor-pointer"
+          onClick$={handleUploadZoneClick}
+        >
+          {isUploading.value ? (
+            <div class="text-center py-8">
+              <span class="spinner mx-auto mb-4" />
+              <p class="text-[var(--color-text-muted)]">アップロード中...</p>
+            </div>
+          ) : imageUrl.value ? (
             <div class="relative">
               <img
                 src={imageUrl.value}
@@ -90,7 +132,10 @@ export const PRForm = component$<PRFormProps>((props) => {
               />
               <button
                 type="button"
-                onClick$={() => (imageUrl.value = "")}
+                onClick$={(e) => {
+                  e.stopPropagation();
+                  imageUrl.value = "";
+                }}
                 class="absolute top-2 right-2 glass-button px-2 py-1 text-xs"
               >
                 削除
@@ -112,14 +157,17 @@ export const PRForm = component$<PRFormProps>((props) => {
                 />
               </svg>
               <p class="text-[var(--color-text-muted)]">
-                画像をドラッグ&ドロップまたはクリックしてアップロード
+                画像をクリックしてアップロード
               </p>
               <p class="text-xs text-[var(--color-text-muted)] mt-2">
-                JPEG, PNG, GIF, WebP (最大10MB)
+                JPEG, PNG, GIF, WebP (最大5MB)
               </p>
             </div>
           )}
         </div>
+        {uploadError.value && (
+          <p class="text-red-500 text-sm mt-2">{uploadError.value}</p>
+        )}
         <div class="mt-3">
           <label class="form-label text-sm">または画像URLを入力</label>
           <input
