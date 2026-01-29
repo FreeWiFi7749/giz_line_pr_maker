@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "giz-line-pr-maker",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-01-15",
+  "compatibility_flags": ["nodejs_compat"],
+  
+  // Environment variables (non-sensitive)
+  // For production, set PUBLIC_API_URL in Cloudflare Dashboard or use wrangler secret
+  "vars": {
+    "PUBLIC_API_URL": "http://localhost:8000"
+  },
+
+  // Preview environment (for PR deployments)
+  "env": {
+    "preview": {
+      "vars": {
+        "PUBLIC_API_URL": "http://localhost:8000"
+      }
+    },
+    "production": {
+      "vars": {
+        // Set this to your production API URL in Cloudflare Dashboard
+        // Example: "PUBLIC_API_URL": "https://giz-line-pr-maker-api.railway.app"
+      }
+    }
+  }
+}
