@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "giz-line-pr-maker",
+  "main": "./dist/server/entry.cloudflare-pages.js",
+  "compatibility_date": "2026-01-15",
+  "compatibility_flags": ["nodejs_compat"],
+  
+  // Workers Assets configuration for static files
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+
+  // Environment variables
+  "vars": {
+    "PUBLIC_API_URL": "https://api.prmaker.frwi.tech"
+  },
+
+  // Preview environment (for PR deployments)
+  "env": {
+    "preview": {
+      "vars": {
+        "PUBLIC_API_URL": "https://api.prmaker.frwi.tech"
+      }
+    },
+    "production": {
+      "vars": {
+        "PUBLIC_API_URL": "https://api.prmaker.frwi.tech"
+      }
+    }
+  }
+}

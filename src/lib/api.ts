@@ -1,4 +1,14 @@
-const API_URL = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
+// API URL is configured via environment variable
+// In Cloudflare Pages: set PUBLIC_API_URL in wrangler.jsonc or Dashboard
+// In development: set in .env file or use default localhost
+export const getApiUrl = () => {
+  // Check for Vite environment variable (client-side and dev)
+  if (typeof import.meta !== "undefined" && import.meta.env?.PUBLIC_API_URL) {
+    return import.meta.env.PUBLIC_API_URL;
+  }
+  // Default fallback for development
+  return "http://localhost:8000";
+};
 
 export interface PRBubble {
   id: string;
@@ -73,7 +83,7 @@ async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const url = `${API_URL}${endpoint}`;
+  const url = `${getApiUrl()}${endpoint}`;
   const response = await fetch(url, {
     ...options,
     headers: {
@@ -129,7 +139,7 @@ export const api = {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${API_URL}/api/upload/image`, {
+      const response = await fetch(`${getApiUrl()}/api/upload/image`, {
         method: "POST",
         body: formData,
       });
