@@ -51,8 +51,21 @@ export const PRForm = component$<PRFormProps>((props) => {
     notifyPreviewChange();
   });
 
+  const validationError = useSignal("");
+
   const handleSubmit = $((e: Event) => {
     e.preventDefault();
+    validationError.value = "";
+
+    if (title.value.length > 60) {
+      validationError.value = "タイトルは60文字以内で入力してください";
+      return;
+    }
+    if (description.value.length > 200) {
+      validationError.value = "説明文は200文字以内で入力してください";
+      return;
+    }
+
     const data: PRBubbleCreate = {
       title: title.value,
       description: description.value,
@@ -361,6 +374,13 @@ export const PRForm = component$<PRFormProps>((props) => {
         />
         <p class="form-hint">アクセス解析で使用</p>
       </div>
+
+      {/* Validation Error */}
+      {validationError.value && (
+        <div class="text-red-500 text-sm p-3 bg-red-500/10 rounded-lg">
+          {validationError.value}
+        </div>
+      )}
 
       {/* Submit Buttons */}
       <div class="flex gap-4 pt-4">
