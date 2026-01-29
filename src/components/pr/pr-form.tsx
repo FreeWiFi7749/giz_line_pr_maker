@@ -190,20 +190,20 @@ export const PRForm = component$<PRFormProps>((props) => {
           value={title.value}
           onInput$={(e) => (title.value = (e.target as HTMLInputElement).value)}
           placeholder="タイトルを入力"
-          maxLength={40}
+          maxLength={60}
           required
           class="glass-input"
         />
         <div
           class={`char-counter ${
-            title.value.length > 35
-              ? title.value.length >= 40
+            title.value.length > 54
+              ? title.value.length >= 60
                 ? "error"
                 : "warning"
               : ""
           }`}
         >
-          {title.value.length}/40
+          {title.value.length}/60
         </div>
       </div>
 
