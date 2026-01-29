@@ -51,8 +51,21 @@ export const PRForm = component$<PRFormProps>((props) => {
     notifyPreviewChange();
   });
 
+  const validationError = useSignal("");
+
   const handleSubmit = $((e: Event) => {
     e.preventDefault();
+    validationError.value = "";
+
+    if (title.value.length > 60) {
+      validationError.value = "タイトルは60文字以内で入力してください";
+      return;
+    }
+    if (description.value.length > 200) {
+      validationError.value = "説明文は200文字以内で入力してください";
+      return;
+    }
+
     const data: PRBubbleCreate = {
       title: title.value,
       description: description.value,
@@ -190,20 +203,20 @@ export const PRForm = component$<PRFormProps>((props) => {
           value={title.value}
           onInput$={(e) => (title.value = (e.target as HTMLInputElement).value)}
           placeholder="タイトルを入力"
-          maxLength={40}
+          maxLength={60}
           required
           class="glass-input"
         />
         <div
           class={`char-counter ${
-            title.value.length > 35
-              ? title.value.length >= 40
+            title.value.length > 54
+              ? title.value.length >= 60
                 ? "error"
                 : "warning"
               : ""
           }`}
         >
-          {title.value.length}/40
+          {title.value.length}/60
         </div>
       </div>
 
@@ -214,21 +227,21 @@ export const PRForm = component$<PRFormProps>((props) => {
           value={description.value}
           onInput$={(e) => (description.value = (e.target as HTMLTextAreaElement).value)}
           placeholder="説明文を入力"
-          maxLength={100}
+          maxLength={200}
           required
           class="glass-textarea"
           rows={3}
         />
         <div
           class={`char-counter ${
-            description.value.length > 90
-              ? description.value.length >= 100
+            description.value.length > 180
+              ? description.value.length >= 200
                 ? "error"
                 : "warning"
               : ""
           }`}
         >
-          {description.value.length}/100
+          {description.value.length}/200
         </div>
       </div>
 
@@ -361,6 +374,13 @@ export const PRForm = component$<PRFormProps>((props) => {
         />
         <p class="form-hint">アクセス解析で使用</p>
       </div>
+
+      {/* Validation Error */}
+      {validationError.value && (
+        <div class="text-red-500 text-sm p-3 bg-red-500/10 rounded-lg">
+          {validationError.value}
+        </div>
+      )}
 
       {/* Submit Buttons */}
       <div class="flex gap-4 pt-4">
