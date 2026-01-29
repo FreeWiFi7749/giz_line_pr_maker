@@ -214,21 +214,21 @@ export const PRForm = component$<PRFormProps>((props) => {
           value={description.value}
           onInput$={(e) => (description.value = (e.target as HTMLTextAreaElement).value)}
           placeholder="説明文を入力"
-          maxLength={100}
+          maxLength={200}
           required
           class="glass-textarea"
           rows={3}
         />
         <div
           class={`char-counter ${
-            description.value.length > 90
-              ? description.value.length >= 100
+            description.value.length > 180
+              ? description.value.length >= 200
                 ? "error"
                 : "warning"
               : ""
           }`}
         >
-          {description.value.length}/100
+          {description.value.length}/200
         </div>
       </div>
 
