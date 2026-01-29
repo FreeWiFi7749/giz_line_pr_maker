@@ -11,22 +11,12 @@
     "binding": "ASSETS"
   },
 
-  // Environment variables
+  // Environment variables (public, non-sensitive)
   "vars": {
-    "PUBLIC_API_URL": "https://api.prmaker.frwi.tech"
-  },
-
-  // Preview environment (for PR deployments)
-  "env": {
-    "preview": {
-      "vars": {
-        "PUBLIC_API_URL": "https://api.prmaker.frwi.tech"
-      }
-    },
-    "production": {
-      "vars": {
-        "PUBLIC_API_URL": "https://api.prmaker.frwi.tech"
-      }
-    }
+    "API_URL": "https://api.prmaker.frwi.tech"
   }
+
+  // SECRETS (set via wrangler secret put):
+  // - API_KEY: API key for backend authentication
+  //   Run: npx wrangler secret put API_KEY
 }
