@@ -1,14 +1,9 @@
-// API URL is configured via environment variable
-// In Cloudflare Workers: set PUBLIC_API_URL in wrangler.jsonc or Dashboard
-// In development: set in .env file or use default localhost
-export const getApiUrl = (): string => {
-  // Check for Vite environment variable (client-side and dev)
-  const envUrl = import.meta.env.PUBLIC_API_URL;
-  if (envUrl) {
-    return envUrl;
-  }
-  // Default fallback for development
-  return "http://localhost:8000";
+// API calls are proxied through server-side routes to keep API_KEY secure
+// The server-side routes are at /api/* and forward requests to the backend
+// with the API_KEY header added server-side
+const getApiUrl = (): string => {
+  // Always use relative URL to call our server-side API routes
+  return "";
 };
 
 export interface PRBubble {
