@@ -1,4 +1,4 @@
-import { component$, useSignal, useTask$, $ } from "@builder.io/qwik";
+import { component$, useSignal, useTask$, $, useId } from "@builder.io/qwik";
 import type { PRBubbleCreate } from "~/lib/api";
 import { api } from "~/lib/api";
 
@@ -11,6 +11,8 @@ interface PRFormProps {
 }
 
 export const PRForm = component$<PRFormProps>((props) => {
+  const priorityId = useId();
+  const utmCampaignId = useId();
   const title = useSignal(props.initialData?.title || "");
   const description = useSignal(props.initialData?.description || "");
   const imageUrl = useSignal(props.initialData?.image_url || "");
@@ -333,9 +335,10 @@ export const PRForm = component$<PRFormProps>((props) => {
 
       {/* Priority */}
       <div class="form-group">
-        <label class="form-label">表示順</label>
+        <label class="form-label" for={priorityId}>表示順</label>
         <input
           type="number"
+          id={priorityId}
           value={priority.value}
           onInput$={(e) => (priority.value = (e.target as HTMLInputElement).value)}
           placeholder="1が一番上（未設定可）"
@@ -347,9 +350,10 @@ export const PRForm = component$<PRFormProps>((props) => {
 
       {/* UTM Campaign */}
       <div class="form-group">
-        <label class="form-label">計測用タグ</label>
+        <label class="form-label" for={utmCampaignId}>計測用タグ</label>
         <input
           type="text"
+          id={utmCampaignId}
           value={utmCampaign.value}
           onInput$={(e) => (utmCampaign.value = (e.target as HTMLInputElement).value)}
           placeholder="winter_sale（未設定時は自動生成）"
