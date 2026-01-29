@@ -57,7 +57,7 @@ export default component$(() => {
   return (
     <div class="animate-fade-in">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-        <h1 class="text-3xl font-bold text-white">PR一覧</h1>
+        <h1 class="text-3xl font-bold text-white">作成したPR枠</h1>
 
         {/* Status Filter */}
         <div class="flex gap-2">
@@ -117,10 +117,10 @@ export default component$(() => {
             />
           </svg>
           <h2 class="text-xl font-semibold text-white mb-2">
-            PRがありません
+            まだPR枠がありません
           </h2>
           <p class="text-[var(--color-text-muted)] mb-6">
-            新しいPRを作成して、ダイジェスト配信に追加しましょう
+            新しいPR枠を作成して、ダイジェスト配信に載せましょう
           </p>
           <a href="/create" class="glass-button glass-button-primary px-6 py-3">
             + 新規作成
@@ -175,11 +175,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "PR一覧",
+  title: "作成したPR枠",
   meta: [
     {
       name: "description",
-      content: "LINE Flex Message PRバブルの一覧管理",
+      content: "作成したPR枠の一覧",
     },
   ],
 };

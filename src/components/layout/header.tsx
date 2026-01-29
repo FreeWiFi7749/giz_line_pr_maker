@@ -30,7 +30,7 @@ export const Header = component$(() => {
             href="/"
             class="glass-button px-4 py-2 text-sm"
           >
-            PR一覧
+            作成したPR枠
           </Link>
           <Link
             href="/create"
