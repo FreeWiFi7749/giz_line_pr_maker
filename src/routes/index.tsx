@@ -1,4 +1,4 @@
-import { component$, useSignal, useTask$, $ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
 import { PRCard } from "~/components/pr/pr-card";
 import { api, type PRBubble } from "~/lib/api";
@@ -29,7 +29,8 @@ export default component$(() => {
     }
   });
 
-  useTask$(({ track }) => {
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
     track(() => statusFilter.value);
     track(() => currentPage.value);
     loadPRs();
