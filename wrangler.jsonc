@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "giz-line-pr-maker",
-  "main": "./dist/server/entry.cloudflare-pages.js",
+  "main": "./server/entry.cloudflare-workers.js",
   "compatibility_date": "2026-01-15",
   "compatibility_flags": ["nodejs_compat"],
   
