@@ -187,7 +187,7 @@ export const PRForm = component$<PRFormProps>((props) => {
           type="text"
           value={title.value}
           onInput$={(e) => (title.value = (e.target as HTMLInputElement).value)}
-          placeholder="PRタイトルを入力"
+          placeholder="タイトルを入力"
           maxLength={40}
           required
           class="glass-input"
@@ -211,7 +211,7 @@ export const PRForm = component$<PRFormProps>((props) => {
         <textarea
           value={description.value}
           onInput$={(e) => (description.value = (e.target as HTMLTextAreaElement).value)}
-          placeholder="PRの説明文を入力"
+          placeholder="説明文を入力"
           maxLength={100}
           required
           class="glass-textarea"
@@ -306,7 +306,7 @@ export const PRForm = component$<PRFormProps>((props) => {
 
       {/* Date Range */}
       <div class="form-group">
-        <label class="form-label">配信期間</label>
+        <label class="form-label">いつからいつまで配信する？</label>
         <div class="grid-2">
           <div>
             <label class="form-label text-sm">開始日時</label>
@@ -333,21 +333,21 @@ export const PRForm = component$<PRFormProps>((props) => {
 
       {/* Priority */}
       <div class="form-group">
-        <label class="form-label">優先度</label>
+        <label class="form-label">表示順</label>
         <input
           type="number"
           value={priority.value}
           onInput$={(e) => (priority.value = (e.target as HTMLInputElement).value)}
-          placeholder="1が最高優先度（未設定可）"
+          placeholder="1が一番上（未設定可）"
           min={1}
           class="glass-input"
         />
-        <p class="form-hint">数値が小さいほど優先度が高くなります</p>
+        <p class="form-hint">数値が小さいほど上に表示されます</p>
       </div>
 
       {/* UTM Campaign */}
       <div class="form-group">
-        <label class="form-label">UTMキャンペーン名</label>
+        <label class="form-label">計測用タグ</label>
         <input
           type="text"
           value={utmCampaign.value}
@@ -355,7 +355,7 @@ export const PRForm = component$<PRFormProps>((props) => {
           placeholder="winter_sale（未設定時は自動生成）"
           class="glass-input"
         />
-        <p class="form-hint">Google Analytics等での追跡用</p>
+        <p class="form-hint">アクセス解析で使用</p>
       </div>
 
       {/* Submit Buttons */}

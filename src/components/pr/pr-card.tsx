@@ -68,11 +68,11 @@ export const PRCard = component$<PRCardProps>((props) => {
         <div class="flex gap-4 mb-4">
           <div class="stats-card flex-1 text-center py-3">
             <div class="stats-value text-lg">{pr.view_count.toLocaleString()}</div>
-            <div class="stats-label text-xs">表示</div>
+            <div class="stats-label text-xs">見られた</div>
           </div>
           <div class="stats-card flex-1 text-center py-3">
             <div class="stats-value text-lg">{pr.click_count.toLocaleString()}</div>
-            <div class="stats-label text-xs">クリック</div>
+            <div class="stats-label text-xs">タップされた</div>
           </div>
         </div>
 

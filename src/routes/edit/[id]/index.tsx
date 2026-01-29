@@ -82,7 +82,7 @@ export default component$(() => {
         <a href="/" class="text-[var(--color-text-muted)] hover:text-white transition-colors">
           ← 一覧に戻る
         </a>
-        <h1 class="text-3xl font-bold text-white mt-4">PR編集</h1>
+        <h1 class="text-3xl font-bold text-white mt-4">PR枠を編集</h1>
       </div>
 
       {error.value && (
@@ -101,7 +101,7 @@ export default component$(() => {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form Section */}
           <div class="glass-card p-6">
-            <h2 class="text-xl font-semibold text-white mb-6">PR情報</h2>
+            <h2 class="text-xl font-semibold text-white mb-6">PR枠の内容</h2>
             <PRForm
               initialData={{
                 title: pr.value.title,
@@ -127,7 +127,7 @@ export default component$(() => {
           {/* Preview Section */}
           <div class="lg:sticky lg:top-24 lg:self-start">
             <div class="glass-card p-6">
-              <h2 class="text-xl font-semibold text-white mb-6">プレビュー</h2>
+              <h2 class="text-xl font-semibold text-white mb-6">LINEでの見え方</h2>
               <LinePreview
                 title={previewTitle.value}
                 description={previewDescription.value}
@@ -171,11 +171,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "PR編集",
+  title: "PR枠を編集",
   meta: [
     {
       name: "description",
-      content: "LINE Flex Message PRバブルを編集",
+      content: "PR枠を編集",
     },
   ],
 };
