@@ -1,10 +1,11 @@
 // API URL is configured via environment variable
-// In Cloudflare Pages: set PUBLIC_API_URL in wrangler.jsonc or Dashboard
+// In Cloudflare Workers: set PUBLIC_API_URL in wrangler.jsonc or Dashboard
 // In development: set in .env file or use default localhost
-export const getApiUrl = () => {
+export const getApiUrl = (): string => {
   // Check for Vite environment variable (client-side and dev)
-  if (typeof import.meta !== "undefined" && import.meta.env?.PUBLIC_API_URL) {
-    return import.meta.env.PUBLIC_API_URL;
+  const envUrl = import.meta.env.PUBLIC_API_URL;
+  if (envUrl) {
+    return envUrl;
   }
   // Default fallback for development
   return "http://localhost:8000";
