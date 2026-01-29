@@ -37,40 +37,40 @@ export default component$(() => {
             
             <h2 class="onboarding-title">Giz PR Maker へようこそ</h2>
             <p class="onboarding-description">
-              LINE Flex Messageを簡単に作成できる<br />
-              PRコンテンツ管理ツールです。
+              ダイジェスト配信に載せるPR枠を<br />
+              作成・管理できます。
             </p>
 
             <div class="onboarding-steps">
               <div class="onboarding-step animate-slide-up-delay stagger-1">
                 <div class="onboarding-step-number">1</div>
                 <div class="onboarding-step-content">
-                  <h4>PRを作成</h4>
-                  <p>「新規作成」からタイトル、説明、画像、タグを入力</p>
+                  <h4>PR枠を作る</h4>
+                  <p>タイトル・説明・画像を入力</p>
                 </div>
               </div>
               
               <div class="onboarding-step animate-slide-up-delay stagger-2">
                 <div class="onboarding-step-number">2</div>
                 <div class="onboarding-step-content">
-                  <h4>リアルタイムプレビュー</h4>
-                  <p>右側でLINE Flex Messageの表示を確認</p>
+                  <h4>LINEでどう見える？</h4>
+                  <p>右側で実際の表示を確認</p>
                 </div>
               </div>
               
               <div class="onboarding-step animate-slide-up-delay stagger-3">
                 <div class="onboarding-step-number">3</div>
                 <div class="onboarding-step-content">
-                  <h4>ステータス管理</h4>
-                  <p>下書き → 公開中 → 終了 でPRのライフサイクルを管理</p>
+                  <h4>いつ配信する？</h4>
+                  <p>下書き→公開中→終了で管理</p>
                 </div>
               </div>
 
               <div class="onboarding-step animate-slide-up-delay stagger-4">
                 <div class="onboarding-step-number">4</div>
                 <div class="onboarding-step-content">
-                  <h4>複製・編集</h4>
-                  <p>既存PRを複製して効率的に新規作成</p>
+                  <h4>前のを使い回したい</h4>
+                  <p>既存PRをコピーして編集</p>
                 </div>
               </div>
             </div>
