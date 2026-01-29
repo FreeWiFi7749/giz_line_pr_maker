@@ -1,0 +1,2 @@
+# Ignore _worker.js to prevent Cloudflare Workers from uploading it as a static asset
+_worker.js
