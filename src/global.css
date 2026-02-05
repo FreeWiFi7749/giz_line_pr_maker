@@ -321,13 +321,16 @@ body {
   overflow: hidden;
 }
 
-/* LINE Bubble Card */
+/* LINE Bubble Card - mega size (実際のLINE表示に合わせて調整) */
 .line-bubble {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-width: 280px;
+  width: 340px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
 }
 
 .line-bubble-image {
@@ -348,11 +351,15 @@ body {
 }
 
 .line-bubble-body {
-  padding: 12px 16px;
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
 }
 
 .line-bubble-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: #111111;
   margin-bottom: 8px;
@@ -360,13 +367,14 @@ body {
 }
 
 .line-bubble-description {
-  font-size: 12px;
+  font-size: 13px;
   color: #aaaaaa;
   line-height: 1.5;
+  flex: 1;
 }
 
 .line-bubble-footer {
-  padding: 8px 16px 12px;
+  padding: 12px 20px 16px;
   border-top: 1px solid #eeeeee;
 }
 
@@ -374,7 +382,7 @@ body {
   display: block;
   text-align: center;
   color: #0084ff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   text-decoration: none;
   padding: 8px;

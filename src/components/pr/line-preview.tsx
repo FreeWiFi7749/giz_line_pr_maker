@@ -10,7 +10,7 @@ interface LinePreviewProps {
 }
 
 export const LinePreview = component$<LinePreviewProps>((props) => {
-  const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='182' viewBox='0 0 280 182'%3E%3Crect fill='%23374151' width='280' height='182'/%3E%3Ctext fill='%239CA3AF' font-family='sans-serif' font-size='14' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3ENo Image%3C/text%3E%3C/svg%3E";
+  const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='221' viewBox='0 0 340 221'%3E%3Crect fill='%23374151' width='340' height='221'/%3E%3Ctext fill='%239CA3AF' font-family='sans-serif' font-size='14' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3ENo Image%3C/text%3E%3C/svg%3E";
 
   return (
     <div class="line-preview-container">
@@ -25,8 +25,8 @@ export const LinePreview = component$<LinePreviewProps>((props) => {
                 src={props.imageUrl || placeholderImage}
                 alt=""
                 class="line-bubble-image"
-                width={280}
-                height={182}
+                width={340}
+                height={221}
               />
             </div>
             <div class="line-bubble-body">
@@ -43,8 +43,8 @@ export const LinePreview = component$<LinePreviewProps>((props) => {
                 src={props.imageUrl || placeholderImage}
                 alt={props.title}
                 class="line-bubble-image"
-                width={280}
-                height={182}
+                width={340}
+                height={221}
               />
               <div
                 class="line-bubble-tag"
@@ -77,8 +77,8 @@ export const LinePreview = component$<LinePreviewProps>((props) => {
                 src={props.imageUrl || placeholderImage}
                 alt=""
                 class="line-bubble-image"
-                width={280}
-                height={182}
+                width={340}
+                height={221}
               />
             </div>
             <div class="line-bubble-body">
