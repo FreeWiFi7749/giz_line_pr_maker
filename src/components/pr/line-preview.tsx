@@ -4,6 +4,7 @@ interface LinePreviewProps {
   title: string;
   description: string;
   imageUrl: string;
+  tagType: "gizmart" | "custom";
   tagText: string;
   tagColor: string;
 }
@@ -61,7 +62,9 @@ export const LinePreview = component$<LinePreviewProps>((props) => {
               </div>
             </div>
             <div class="line-bubble-footer">
-              <span class="line-bubble-button">詳細を見る</span>
+              <span class="line-bubble-button">
+                {props.tagType === "gizmart" ? "CoSTORYで見る" : "詳細を見る"}
+              </span>
             </div>
           </div>
         </div>

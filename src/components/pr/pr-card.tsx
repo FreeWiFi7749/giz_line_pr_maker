@@ -6,6 +6,7 @@ interface PRCardProps {
   pr: PRBubble;
   onDuplicate$?: (id: string) => void;
   onDelete$?: (id: string) => void;
+  onStatusChange$?: (id: string, status: "draft" | "active") => void;
 }
 
 export const PRCard = component$<PRCardProps>((props) => {
@@ -75,6 +76,26 @@ export const PRCard = component$<PRCardProps>((props) => {
             <div class="stats-label text-xs">タップされた</div>
           </div>
         </div>
+
+        {/* Status Toggle */}
+        {pr.status !== "inactive" && (
+          <div class="flex gap-2 mb-4">
+            <button
+              type="button"
+              onClick$={() => props.onStatusChange$?.(pr.id, "draft")}
+              class={`glass-button flex-1 text-center text-sm py-2 ${pr.status === "draft" ? "glass-button-primary" : ""}`}
+            >
+              下書き
+            </button>
+            <button
+              type="button"
+              onClick$={() => props.onStatusChange$?.(pr.id, "active")}
+              class={`glass-button flex-1 text-center text-sm py-2 ${pr.status === "active" ? "glass-button-primary" : ""}`}
+            >
+              公開
+            </button>
+          </div>
+        )}
 
         {/* Actions */}
         <div class="flex gap-2">

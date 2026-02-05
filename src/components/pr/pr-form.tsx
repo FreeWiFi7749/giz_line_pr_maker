@@ -36,6 +36,7 @@ export const PRForm = component$<PRFormProps>((props) => {
         title: title.value,
         description: description.value,
         image_url: imageUrl.value,
+        tag_type: tagType.value,
         tag_text: tagText.value,
         tag_color: tagColor.value,
       });
@@ -46,6 +47,7 @@ export const PRForm = component$<PRFormProps>((props) => {
     track(() => title.value);
     track(() => description.value);
     track(() => imageUrl.value);
+    track(() => tagType.value);
     track(() => tagText.value);
     track(() => tagColor.value);
     notifyPreviewChange();
