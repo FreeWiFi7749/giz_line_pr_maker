@@ -329,6 +329,8 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 340px;
   max-width: 340px;
+  display: flex;
+  flex-direction: column;
 }
 
 .line-bubble-image {
@@ -350,6 +352,10 @@ body {
 
 .line-bubble-body {
   padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
 }
 
 .line-bubble-title {
@@ -364,6 +370,7 @@ body {
   font-size: 13px;
   color: #aaaaaa;
   line-height: 1.5;
+  flex: 1;
 }
 
 .line-bubble-footer {
