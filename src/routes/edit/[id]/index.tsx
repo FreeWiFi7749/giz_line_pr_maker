@@ -17,6 +17,7 @@ export default component$(() => {
   const previewTitle = useSignal("");
   const previewDescription = useSignal("");
   const previewImageUrl = useSignal("");
+  const previewTagType = useSignal<"gizmart" | "custom">("gizmart");
   const previewTagText = useSignal("GIZMART");
   const previewTagColor = useSignal("#FF1BE8");
 
@@ -27,6 +28,7 @@ export default component$(() => {
       previewTitle.value = data.title;
       previewDescription.value = data.description;
       previewImageUrl.value = data.image_url;
+      previewTagType.value = data.tag_type;
       previewTagText.value = data.tag_text;
       previewTagColor.value = data.tag_color;
     } catch (e) {
@@ -40,6 +42,7 @@ export default component$(() => {
     if (data.title !== undefined) previewTitle.value = data.title;
     if (data.description !== undefined) previewDescription.value = data.description;
     if (data.image_url !== undefined) previewImageUrl.value = data.image_url;
+    if (data.tag_type !== undefined) previewTagType.value = data.tag_type;
     if (data.tag_text !== undefined) previewTagText.value = data.tag_text;
     if (data.tag_color !== undefined) previewTagColor.value = data.tag_color;
   });
@@ -132,6 +135,7 @@ export default component$(() => {
                 title={previewTitle.value}
                 description={previewDescription.value}
                 imageUrl={previewImageUrl.value}
+                tagType={previewTagType.value}
                 tagText={previewTagText.value}
                 tagColor={previewTagColor.value}
               />
