@@ -321,14 +321,14 @@ body {
   overflow: hidden;
 }
 
-/* LINE Bubble Card - mega size (300px width in LINE) */
+/* LINE Bubble Card - mega size (実際のLINE表示に合わせて調整) */
 .line-bubble {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  max-width: 300px;
+  width: 340px;
+  max-width: 340px;
 }
 
 .line-bubble-image {
