@@ -54,6 +54,15 @@ export default component$(() => {
     }
   });
 
+  const handleStatusChange = $(async (id: string, status: "draft" | "active") => {
+    try {
+      await api.pr.update(id, { status });
+      await loadPRs();
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : "Failed to update status";
+    }
+  });
+
   return (
     <div class="animate-fade-in">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
@@ -138,6 +147,7 @@ export default component$(() => {
                 pr={pr}
                 onDuplicate$={handleDuplicate}
                 onDelete$={handleDelete}
+                onStatusChange$={handleStatusChange}
               />
             ))}
           </div>
